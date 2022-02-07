@@ -37,8 +37,28 @@ public class Contribuinte {
         this.juridica = juridica;
     }
 
-    @Override
-    public String toString() {
+
+    public String infoFisica(){
+        String s = "***Imposto Pessoa Fisica***"  + "\n";
+
+        for(PessoaFisica pf : fisica){
+            s += pf.toString() + "\n";
+        }
+        return s;
+    }
+
+    public String infoJuridica(){
+
+        String s = "***Imposto Pessoa Juridica***" + "\n";
+
+        for(PessoaFisica pf : fisica){
+            s += pf.toString() + "\n";
+        }
+        return s;
+    }
+
+    /*@Override
+   public String toString() {
 
         String s = "Nome='" + this.getNome() + "\n";
 
@@ -50,5 +70,5 @@ public class Contribuinte {
             s += pj.toString();
         }
         return s;
-    }
+    }*/
 }

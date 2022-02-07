@@ -7,50 +7,66 @@ public class Aplicativo {
         Scanner scan = new Scanner(System.in);
 
         Contribuinte cont = new Contribuinte();
-        System.out.print("Entre com tipo de contribuinte: ");
-        String nome = scan.nextLine();
+        System.out.println("***MENU***");
+        System.out.println("Digite o tipo de contribuinte: 1 - PESSOA FISICA: ");
+        System.out.println("Digite o tipo de contribuinte: 2 - PESSOA JURIDICA: ");
+        int num = scan.nextInt();
+        scan.nextLine();
 
+        if(num == 1){
 
-        PessoaJuridica[] pj = new PessoaJuridica[3];
-        for (int i = 0; i < pj.length; i++){
-            System.out.print("Entre com o nome da empresa: ");
-            String nomeEmp = scan.nextLine();
+            System.out.println("***PESSOA FISICA***");
 
-            System.out.print("Entre com renda: ");
-            double rendaJur = scan.nextDouble();
+            System.out.println("Digite a quantidade de pessoas: ");
+            int qtd = scan.nextInt();
+
+            PessoaFisica[] pf = new PessoaFisica[qtd];
             scan.nextLine();
+            for (int i = 0; i<pf.length; i++){
+                System.out.print("Entre com o nome da pessoa: ");
+                String nomePes = scan.nextLine();
 
-            PessoaJuridica pessoaJur = new PessoaJuridica();
-            pessoaJur.setNome(nomeEmp);
-            pessoaJur.setRendaJuridica(rendaJur);
-            pj[i] = pessoaJur;
+                System.out.print("Entre com renda: ");
+                double rendaPes = scan.nextDouble();
+                scan.nextLine();
 
-        }
+                PessoaFisica pessoaFis = new PessoaFisica();
+                pessoaFis.setNome(nomePes);
+                pessoaFis.setRendaFisica(rendaPes);
+                pf[i] = pessoaFis;
+            }
 
-        System.out.print("Entre com tipo de contribuinte: ");
-        String nome1 = scan.nextLine();
+            cont.setFisica(pf);
+            System.out.println(cont.infoFisica());
 
-        PessoaFisica[] pf = new PessoaFisica[3];
-        for (int i = 0; i<pf.length; i++){
-            System.out.print("Entre com o nome da pessoa: ");
-            String nomePes = scan.nextLine();
+        } else if (num == 2){
 
-            System.out.print("Entre com renda: ");
-            double rendaPes = scan.nextDouble();
+            System.out.println("***PESSOA JURIDICA***");
+
+            System.out.println("Digite a quantidade de pessoas: ");
+            int qtd = scan.nextInt();
+
+            PessoaJuridica[] pj = new PessoaJuridica[qtd];
             scan.nextLine();
+            for (int i = 0; i < pj.length; i++){
+                System.out.print("Entre com o nome da empresa: ");
+                String nomeEmp = scan.nextLine();
 
-            PessoaFisica pessoaFis = new PessoaFisica();
-            pessoaFis.setNome(nomePes);
-            pessoaFis.setRendaFisica(rendaPes);
-            pf[i] = pessoaFis;
+                System.out.print("Entre com renda: ");
+                double rendaJur = scan.nextDouble();
+                scan.nextLine();
+
+                PessoaJuridica pessoaJur = new PessoaJuridica();
+                pessoaJur.setNome(nomeEmp);
+                pessoaJur.setRendaJuridica(rendaJur);
+                pj[i] = pessoaJur;
+
+            }
+
+            cont.setJuridica(pj);
+            System.out.println(cont);
+        } else {
+            System.out.print("OPÇÃO INDIPONÍVEL");
         }
-
-        cont.setNome(nome);
-        cont.setJuridica(pj);
-        cont.setNome(nome1);
-        cont.setFisica(pf);
-        System.out.println(cont);
-
-
     }
 }
